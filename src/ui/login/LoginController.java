@@ -18,6 +18,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import model.User;
+import ui.manager.AppLoader;
 
 public class LoginController implements Initializable{
 	public static LoginController ctrl=new LoginController();
@@ -52,7 +53,10 @@ public class LoginController implements Initializable{
 		if (textFieldUsername.getText().length() == 0) setStatusText("Username must not be empty!", "red");
 		else if (passwordField.getText().length() == 0) setStatusText("Password must not be empty!", "red");
 		else if (!userExists()) setStatusText("Credential is incorrect!", "red");
-		else setStatusText("Welcome back "+textFieldUsername.getText()+"!", "green");
+		else {
+			AppLoader.drawFormOnMainWindow("Dummy.fxml", new Dummy());
+			//setStatusText("Welcome back "+textFieldUsername.getText()+"!", "green");
+		}
 	}
 	
 	@FXML
