@@ -1,26 +1,24 @@
 package model;
 
-import org.hibernate.annotations.ColumnTransformer;
-
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
+
+import utils.Utils;
 
 @Entity
 public class Staff extends Human{
 	private String username;
-
-	@Column(name="PASSWORD", nullable=false, length=200)
-	private String password;
+	private byte [] password;
 	private String staffType;
-	private Encryption encrypt = new Encryption();
 
 	public Staff() {}
 
 	public Staff(Integer id, String ic, String name, String contact, String emergencyContact, LocalDate dob, String address, String gender, String email, School school, String username, String password, String staffType) {
 		super(id, ic, name, contact, emergencyContact, dob, address, gender, email, school);
 		this.username = username;
-		this.password = password;
+		this.setPassword(password);
 		this.staffType = staffType;
 	}
 
@@ -32,15 +30,21 @@ public class Staff extends Human{
 		this.username = username;
 	}
 
-
-	public String getPassword() {
-		//System.out.println("hohohohohho: "+ password);
-		return encrypt.getDecryptedString(password);
-		//return password;
+	@Lob
+	@Column(name="PASSWORD", nullable=false)
+	public byte[] getPassword() {
+		return this.password;
+	}
+	public void setPassword(byte [] password) {
+		this.password = password;
 	}
 	public void setPassword(String password) {
-		this.password = encrypt.getEncryptedString(password);
-		//System.out.println("asdasd: "+ this.password);
+		this.password = Utils.hash(password);
+	}
+	public boolean isPasswordMatch(String password) {
+		byte [] hashedPassword=Utils.hash(password);
+		for (int i=0;i<this.password.length;i++) if (this.password[i]!=hashedPassword[i]) return false;
+		return true;
 	}
 
 	@Column(name="STAFF_TYPE", nullable=false, length=200)

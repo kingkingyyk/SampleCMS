@@ -37,7 +37,6 @@ public class SampleCMS {
 		u.setEmail("zz@aa");
 		session.save(u);
 	    t.commit();
-	    
 	    SampleCMS.session = session;
 	    AppLoader.main();
 	}

@@ -40,12 +40,9 @@ public class LoginController implements Initializable{
 		CriteriaQuery<Staff> criteria = cb.createQuery(Staff.class);
 		Root<Staff> from=criteria.from(Staff.class);
 		criteria.select(from);
-		criteria.where(cb.and(
-							cb.equal(from.get("username"), textFieldUsername.getText()),
-							cb.equal(from.get("password"), passwordField.getText())
-							)
-						);
-		return SampleCMS.session.createQuery(criteria).getResultList().size() == 1;
+		criteria.where(cb.equal(from.get("username"), textFieldUsername.getText()));
+		for (Staff s : SampleCMS.session.createQuery(criteria).getResultList()) if (s.isPasswordMatch(passwordField.getText())) return true;
+		return false;
 	}
 	
 	@FXML
