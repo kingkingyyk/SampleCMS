@@ -7,12 +7,13 @@
             
     <property name="hbm2ddl.auto">update</property>    
         <property name="dialect">org.hibernate.dialect.HSQLDialect</property>    
-        <property name="connection.url">jdbc:hsqldb:mem:mymemdb</property>    
+        <property name="connection.url">jdbc:hsqldb:file:E:/Workspace/SampleCMS/dbfile/ggdb</property>
         <property name="connection.username">sa</property>    
         <property name="connection.password"></property>    
         <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>   
        
         <mapping class="model.Book"/>
+        <mapping class="model.Human"/>
         <mapping class="model.MusicEquipment"/>
         <mapping class="model.Sales"/>
         <mapping class="model.School"/>
@@ -21,6 +22,5 @@
         <mapping class="model.Student"/>
         <mapping class="model.Subject"/>
         <mapping class="model.Teacher"/>
-        <mapping class="model.User"/>
     </session-factory>  
 </hibernate-configuration>  

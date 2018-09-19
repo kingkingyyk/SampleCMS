@@ -8,8 +8,10 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import model.User;
+import model.Staff;
 import ui.manager.AppLoader;
+
+import java.time.LocalDate;
 
 public class SampleCMS {
 	
@@ -21,9 +23,18 @@ public class SampleCMS {
 		SessionFactory factory = meta.getSessionFactoryBuilder().build();  
 		Session session = factory.openSession();  
 		Transaction t = session.beginTransaction();
-		User u=new User();
+		Staff u=new Staff();
 		u.setUsername("admin");
 		u.setPassword("admin");
+		u.setStaffType("Administrator");
+		u.setIc("12345");
+		u.setName("Keiz");
+		u.setContact("0123");
+		u.setEmergencyContact("44444");
+		u.setDob(LocalDate.now());
+		u.setGender("male");
+		u.setAddress("PJ");
+		u.setEmail("zz@aa");
 		session.save(u);
 	    t.commit();
 	    

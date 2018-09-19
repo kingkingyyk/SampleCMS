@@ -12,16 +12,15 @@ import javax.persistence.Table;
 @Table(name="SCHOOL")
 public class School {
 	private String name;
-	private Set<Staff> staffs;
+	private Set<Human> human;
 	private Set<Stock> stocks;
-	private Set<Student> students;
+	//private Set<Student> students;
 	
 	public School() {}
-	public School(String name, Set<Staff> staffs, Set<Stock> stocks, Set<Student> students) {
+	public School(String name, Set<Human> human, Set<Stock> stocks) {
 		this.name=name;
-		this.staffs=staffs;
+		this.human=human;
 		this.stocks=stocks;
-		this.students=students;
 	}
 	
 	@Id
@@ -32,28 +31,20 @@ public class School {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@OneToMany(mappedBy="school", cascade=CascadeType.ALL)
-	public Set<Staff> getStaffs() {
-		return staffs;
+	public Set<Human> getHuman() {
+		return human;
 	}
-	public void setStaffs(Set<Staff> staffs) {
-		this.staffs = staffs;
+	public void setHuman(Set<Human> human) {
+		this.human = human;
 	}
-	
+
 	@OneToMany(mappedBy="school", cascade=CascadeType.ALL)
 	public Set<Stock> getStocks() {
 		return stocks;
 	}
 	public void setStocks(Set<Stock> stocks) {
 		this.stocks = stocks;
-	}
-	
-	@OneToMany(mappedBy="school", cascade=CascadeType.ALL)
-	public Set<Student> getStudents() {
-		return students;
-	}
-	public void setStudents(Set<Student> students) {
-		this.students = students;
 	}
 }

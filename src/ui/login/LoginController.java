@@ -17,7 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import model.User;
+import model.Staff;
 import ui.manager.AppLoader;
 
 public class LoginController implements Initializable{
@@ -37,8 +37,8 @@ public class LoginController implements Initializable{
 		 * SELECT * FROM USER WHERE USERNAME=abc AND PASSWORD=def
 		 */
 		CriteriaBuilder cb=SampleCMS.session.getCriteriaBuilder();
-		CriteriaQuery<User> criteria = cb.createQuery(User.class);
-		Root<User> from=criteria.from(User.class);
+		CriteriaQuery<Staff> criteria = cb.createQuery(Staff.class);
+		Root<Staff> from=criteria.from(Staff.class);
 		criteria.select(from);
 		criteria.where(cb.and(
 							cb.equal(from.get("username"), textFieldUsername.getText()),

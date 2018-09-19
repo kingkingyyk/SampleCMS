@@ -1,92 +1,53 @@
 package model;
 
-import java.time.LocalDate;
+import org.hibernate.annotations.ColumnTransformer;
 
-import javax.persistence.CascadeType;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="STAFF")
-public class Staff {
-	private String ic;
-	private String name;
-	private LocalDate dob;
-	private String email;
-	private String address;
-	private String contact;
-	private School school;
-	
+public class Staff extends Human{
+	private String username;
+
+	@Column(name="PASSWORD", nullable=false, length=200)
+	private String password;
+	private String staffType;
+	private Encryption encrypt = new Encryption();
+
 	public Staff() {}
-	public Staff(String ic, String name, LocalDate dob, String email, String address, String contact, School school) {
-		this.ic = ic;
-		this.name = name;
-		this.dob = dob;
-		this.email = email;
-		this.address = address;
-		this.contact = contact;
-		this.school = school;
-	}
-	
-	@Id
-	@Column(name="IC")
-	public String getIc() {
-		return ic;
-	}
-	public void setIc(String ic) {
-		this.ic = ic;
+
+	public Staff(Integer id, String ic, String name, String contact, String emergencyContact, LocalDate dob, String address, String gender, String email, School school, String username, String password, String staffType) {
+		super(id, ic, name, contact, emergencyContact, dob, address, gender, email, school);
+		this.username = username;
+		this.password = password;
+		this.staffType = staffType;
 	}
 
-	@Column(name="NAME", nullable=false, length=200)
-	public String getName() {
-		return name;
+	@Column(name="USERNAME", nullable=false, length=200)
+	public String getUsername() {
+		return username;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	
-	@Column(name="DATE_OF_BIRTH")
-	public LocalDate getDob() {
-		return dob;
+
+
+	public String getPassword() {
+		//System.out.println("hohohohohho: "+ password);
+		return encrypt.getDecryptedString(password);
+		//return password;
 	}
-	public void setDob(LocalDate dob) {
-		this.dob = dob;
+	public void setPassword(String password) {
+		this.password = encrypt.getEncryptedString(password);
+		//System.out.println("asdasd: "+ this.password);
 	}
-	
-	@Column(name="EMAIL", nullable=false, length=200)
-	public String getEmail() {
-		return email;
+
+	@Column(name="STAFF_TYPE", nullable=false, length=200)
+	public String getStaffType() {
+		return staffType;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setStaffType(String staffType) {
+		this.staffType = staffType;
 	}
-	
-	@Column(name="ADDRESS", nullable=false, length=200)
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
-	@Column(name="CONTACT", nullable=false, length=200)
-	public String getContact() {
-		return contact;
-	}
-	public void setContact(String contact) {
-		this.contact = contact;
-	}
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	public School getSchool() {
-		return school;
-	}
-	public void setSchool(School school) {
-		this.school = school;
-	}
-	
-	
 }
