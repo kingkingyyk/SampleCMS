@@ -15,12 +15,13 @@ public class Human {
     private String gender;
     private String address;
     private String email;
+    private Boolean active;
     private School school;
 
     public Human() {}
 
     public Human(Integer id, String ic, String name, String contact, String emergencyContact, LocalDate dob,
-                 String address, String gender, String email, School school) {
+                 String address, String gender, String email, Boolean active, School school) {
         this.id = id;
         this.ic = ic;
         this.name = name;
@@ -30,11 +31,13 @@ public class Human {
         this.gender = gender;
         this.address = address;
         this.email = email;
+        this.active = active;
         this.school = school;
     }
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="HUMAN_ID")
     public Integer getId() {
         return id;
     }
@@ -104,6 +107,14 @@ public class Human {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Column(name="ACTIVE", nullable=false, length=200)
+    public Boolean getActive() {
+        return active;
+    }
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     @ManyToOne(cascade=CascadeType.ALL)

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -7,28 +8,27 @@ import javax.persistence.*;
 @Entity
 @Table(name="SUBJECT")
 public class Subject {
-	private Integer id;
+	private int id;
 	private String name;
-	private Teacher teacher;
-	private Set<Student> students;
-	
+	private String description;
+
+	private Set<TeacherSubject> teacherSubjects = new HashSet<TeacherSubject>();
+
 	public Subject() {}
-	
-	public Subject(Integer id, String name, Teacher teacher, Set<Student> students) {
-		super();
+
+	public Subject(int id, String name, String description) {
 		this.id = id;
 		this.name = name;
-		this.teacher = teacher;
-		this.students = students;
+		this.description = description;
 	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Integer getId() {
+	@Column(name="SUBJECT_ID")
+	public int getId() {
 		return id;
 	}
-
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
@@ -36,29 +36,27 @@ public class Subject {
 	public String getName() {
 		return name;
 	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	@ManyToOne(cascade=CascadeType.ALL)
-	public Teacher getTeacher() {
-		return teacher;
+	@Column(name="DESCRIPTION", nullable=false, length=200)
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
+	@OneToMany(mappedBy = "subject", cascade=CascadeType.ALL)
+	public Set<TeacherSubject> getTeacherSubjects() {
+		return teacherSubjects;
+	}
+	public void setTeacherSubjects(Set<TeacherSubject> teacherSubjects) {
+		this.teacherSubjects = teacherSubjects;
 	}
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="Subject_Student", joinColumns= {@JoinColumn(name = "SUBJECT_ID")}, inverseJoinColumns = {@JoinColumn(name = "STUDENT_IC")})
-	public Set<Student> getStudents() {
-		return students;
+	public void addTeacherSubject(TeacherSubject teacherSubject) {
+		this.teacherSubjects.add(teacherSubject);
 	}
-
-	public void setStudents(Set<Student> students) {
-		this.students = students;
-	}
-	
-	
 }

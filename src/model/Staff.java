@@ -15,8 +15,8 @@ public class Staff extends Human{
 
 	public Staff() {}
 
-	public Staff(Integer id, String ic, String name, String contact, String emergencyContact, LocalDate dob, String address, String gender, String email, School school, String username, String password, String staffType) {
-		super(id, ic, name, contact, emergencyContact, dob, address, gender, email, school);
+	public Staff(Integer id, String ic, String name, String contact, String emergencyContact, LocalDate dob, String address, String gender, String email, Boolean active, School school, String username, String password, String staffType) {
+		super(id, ic, name, contact, emergencyContact, dob, address, gender, email, active, school);
 		this.username = username;
 		this.setPassword(password);
 		this.staffType = staffType;
@@ -41,11 +41,6 @@ public class Staff extends Human{
 	public void setPassword(String password) {
 		this.password = Utils.hash(password);
 	}
-	public boolean isPasswordMatch(String password) {
-		byte [] hashedPassword=Utils.hash(password);
-		for (int i=0;i<this.password.length;i++) if (this.password[i]!=hashedPassword[i]) return false;
-		return true;
-	}
 
 	@Column(name="STAFF_TYPE", nullable=false, length=200)
 	public String getStaffType() {
@@ -53,5 +48,11 @@ public class Staff extends Human{
 	}
 	public void setStaffType(String staffType) {
 		this.staffType = staffType;
+	}
+
+	public boolean isPasswordMatch(String password) {
+		byte [] hashedPassword=Utils.hash(password);
+		for (int i=0;i<this.password.length;i++) if (this.password[i]!=hashedPassword[i]) return false;
+		return true;
 	}
 }

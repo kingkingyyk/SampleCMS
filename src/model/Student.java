@@ -12,9 +12,10 @@ public class Student extends Human{
 	
 	public Student() {}
 
-	public Student(Integer id, String ic, String name, String contact, String emergencyContact, LocalDate dob, String address, String gender, String email, School school) {
-		super(id, ic, name, contact, emergencyContact, dob, address, gender, email, school);
+	public Student(Integer id, String ic, String name, String contact, String emergencyContact, LocalDate dob, String address, String gender, String email, Boolean active, School school) {
+		super(id, ic, name, contact, emergencyContact, dob, address, gender, email, active, school);
 	}
+
 /*
 	@ManyToMany(fetch = FetchType.LAZY, cascade={CascadeType.PERSIST, CascadeType.MERGE}, mappedBy="students")
 	public Set<Subject> getSubjects() {
