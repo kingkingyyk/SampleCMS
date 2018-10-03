@@ -1,4 +1,4 @@
-package model;
+package model.Test;
 
 import java.security.NoSuchAlgorithmException;
 import javax.crypto.KeyGenerator;

@@ -10,17 +10,28 @@
         <property name="connection.url">jdbc:hsqldb:file:E:/Workspace/SampleCMS/dbfile/ggdb</property>
         <property name="connection.username">sa</property>    
         <property name="connection.password"></property>    
-        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>   
-       
-        <mapping class="model.Book"/>
-        <mapping class="model.Human"/>
-        <mapping class="model.MusicEquipment"/>
-        <mapping class="model.Sales"/>
+        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+
+        <mapping class="model.Payment.Payment"/>
+        <mapping class="model.Payment.StockPaymentDetail"/>
+        <mapping class="model.Payment.StudentFeePaymentDetail"/>
+
+        <mapping class="model.People.Human"/>
+        <mapping class="model.People.Staff"/>
+        <mapping class="model.People.Student"/>
+        <mapping class="model.People.Teacher"/>
+
+        <mapping class="model.StockInventory.Book"/>
+        <mapping class="model.StockInventory.MusicEquipment"/>
+        <mapping class="model.StockInventory.Stock"/>
+
+        <mapping class="model.SubjectEnrollment.Month"/>
+        <mapping class="model.SubjectEnrollment.MonthlyStudentFee"/>
+        <mapping class="model.SubjectEnrollment.MonthlyTSFee"/>
+        <mapping class="model.SubjectEnrollment.StudentEnrollment"/>
+        <mapping class="model.SubjectEnrollment.Subject"/>
+        <mapping class="model.SubjectEnrollment.TeacherSubject"/>
+
         <mapping class="model.School"/>
-        <mapping class="model.Staff"/>
-        <mapping class="model.Stock"/>
-        <mapping class="model.Student"/>
-        <mapping class="model.Subject"/>
-        <mapping class="model.Teacher"/>
     </session-factory>  
 </hibernate-configuration>  

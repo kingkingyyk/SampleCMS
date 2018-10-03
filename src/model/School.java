@@ -1,5 +1,8 @@
 package model;
 
+import model.People.Human;
+import model.StockInventory.Stock;
+
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

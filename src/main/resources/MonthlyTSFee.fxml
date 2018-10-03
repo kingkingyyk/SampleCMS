@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="442.0" prefWidth="232.0">
+         <children>
+            <TextField layoutX="6.0" layoutY="201.0" />
+            <TextField layoutX="7.0" layoutY="249.0" />
+            <Button layoutX="114.0" layoutY="288.0" mnemonicParsing="false" text="Button" />
+         </children>
+      </Pane>
+      <TreeTableView fx:id="ttblTSMonth" editable="true" prefHeight="505.0" prefWidth="462.0" HBox.hgrow="ALWAYS">
+        <columns>
+          <TreeTableColumn fx:id="ttblcolTeacher" prefWidth="147.0" text="Teacher &amp; Subject" />
+          <TreeTableColumn minWidth="0.0" prefWidth="341.0" text="Fee &amp; Comission Details">
+               <columns>
+                  <TreeTableColumn fx:id="ttblcolYear" prefWidth="75.0" text="Year" />
+                  <TreeTableColumn fx:id="ttblcolMonth" prefWidth="75.0" text="Month" />
+                  <TreeTableColumn fx:id="ttblcolFee" prefWidth="59.0" text="Fee" />
+                  <TreeTableColumn fx:id="ttblcolCommision" prefWidth="91.0" text="Comission" />
+               </columns>
+            </TreeTableColumn>
+        </columns>
+      </TreeTableView>
+   </children>
+</HBox>

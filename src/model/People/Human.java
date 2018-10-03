@@ -1,4 +1,6 @@
-package model;
+package model.People;
+
+import model.School;
 
 import java.time.LocalDate;
 import javax.persistence.*;
@@ -33,6 +35,10 @@ public class Human {
         this.email = email;
         this.active = active;
         this.school = school;
+    }
+
+    public String toString() {
+        return name;
     }
 
     @Id

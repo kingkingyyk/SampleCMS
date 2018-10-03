@@ -17,7 +17,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import model.Staff;
+import model.People.Staff;
+import ui.People.HumanController;
+import ui.SubjectEnrollment.MonthlyTSFeeController;
 import ui.manager.AppLoader;
 
 public class LoginController implements Initializable{
@@ -47,13 +49,18 @@ public class LoginController implements Initializable{
 	
 	@FXML
 	private void onLoginClicked() {
+	    /*
 		if (textFieldUsername.getText().length() == 0) setStatusText("Username must not be empty!", "red");
 		else if (passwordField.getText().length() == 0) setStatusText("Password must not be empty!", "red");
 		else if (!userExists()) setStatusText("Credential is incorrect!", "red");
 		else {
-			AppLoader.drawFormOnMainWindow("Dummy.fxml", new Dummy());
+			AppLoader.drawFormOnMainWindow("People.fxml", HumanController.ctrl);
 			//setStatusText("Welcome back "+textFieldUsername.getText()+"!", "green");
 		}
+		*/
+        //AppLoader.drawFormOnMainWindow("People.fxml", HumanController.ctrl);
+		AppLoader.drawFormOnMainWindow("MonthlyTSFee.fxml", MonthlyTSFeeController.ctrl);
+
 	}
 	
 	@FXML
