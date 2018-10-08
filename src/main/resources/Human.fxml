@@ -19,7 +19,7 @@
       <Pane prefWidth="765.0" VBox.vgrow="NEVER">
          <children>
             <ComboBox fx:id="cbUserType" layoutY="5.0" prefHeight="31.0" prefWidth="173.0" promptText="Select user type" />
-            <ComboBox fx:id="cbSearchUser" editable="true" layoutX="185.0" layoutY="5.0" onAction="#oncbSearchUserSelect" prefHeight="31.0" prefWidth="210.0" promptText="Type the name to seach" />
+            <ComboBox fx:id="cbSearchUser" editable="true" layoutX="185.0" layoutY="5.0" prefHeight="31.0" prefWidth="210.0" promptText="Type the name to seach" />
             <Button fx:id="btnReset" layoutX="409.0" layoutY="4.0" mnemonicParsing="false" onAction="#onResetClicked" text="Reset All Fields" />
          </children>
       </Pane>

@@ -16,6 +16,10 @@ public class TeacherSubject {
     private Set<StudentEnrollment> studentEnrollments = new HashSet<StudentEnrollment>();
     private Set<MonthlyTSFee> monthlyTSFees = new HashSet<MonthlyTSFee>();
 
+    public String toString() {
+        return subject.getName();
+    }
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="TEACHER_SUBJECT_ID")

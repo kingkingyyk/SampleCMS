@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 import model.People.Staff;
 import ui.People.HumanController;
 import ui.SubjectEnrollment.MonthlyTSFeeController;
+import ui.SubjectEnrollment.TeacherSubjectController;
 import ui.manager.AppLoader;
 
 public class LoginController implements Initializable{
@@ -58,8 +59,8 @@ public class LoginController implements Initializable{
 			//setStatusText("Welcome back "+textFieldUsername.getText()+"!", "green");
 		}
 		*/
-        //AppLoader.drawFormOnMainWindow("People.fxml", HumanController.ctrl);
-		AppLoader.drawFormOnMainWindow("MonthlyTSFee.fxml", MonthlyTSFeeController.ctrl);
+        AppLoader.drawFormOnMainWindow("TeacherSubject.fxml", TeacherSubjectController.ctrl);
+		//AppLoader.drawFormOnMainWindow("MonthlyTSFee.fxml", MonthlyTSFeeController.ctrl);
 
 	}
 	

@@ -23,7 +23,7 @@ import javax.persistence.criteria.Root;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MonthlyTSFeeController implements Initializable {
+public class MonthlyTSFeeController implements Initializable{
     public static MonthlyTSFeeController ctrl=new MonthlyTSFeeController();
 
     @FXML private TreeTableView ttblTSMonth;

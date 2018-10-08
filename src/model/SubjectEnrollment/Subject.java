@@ -21,6 +21,9 @@ public class Subject {
 		this.name = name;
 		this.description = description;
 	}
+	public String toString() {
+		return name;
+	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

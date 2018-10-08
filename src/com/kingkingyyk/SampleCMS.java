@@ -24,13 +24,13 @@ public class SampleCMS {
 	
 	public static Session session;
 	public static void main (String [] args) {
-/*
+
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();  
 		Metadata meta = new MetadataSources(ssr).getMetadataBuilder().build();
 		SessionFactory factory = meta.getSessionFactoryBuilder().build();  
 		Session session = (Session)factory.openSession();
 		Transaction t = session.beginTransaction();
-
+/*
 		Staff staff = getStaff();
 		Teacher teacher = getTeacher();
 		Subject subject = getSubject("Guitar Grade 1");
@@ -60,6 +60,7 @@ public class SampleCMS {
 
 	    SampleCMS.session = session;
 */
+
 		SampleCMS.session = HibernateUtils.getHibernateSession();
 	    AppLoader.main();
 	}
